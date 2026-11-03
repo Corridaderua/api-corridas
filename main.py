@@ -20,7 +20,7 @@ def listar_provas(
     conn = get_db_connection()
     cursor = conn.cursor()
 
-       try:
+    try:
         query = """
             SELECT 
                 p.id,
