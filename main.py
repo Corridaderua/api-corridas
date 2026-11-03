@@ -41,7 +41,6 @@ def listar_provas(
             WHERE p.data_hora >= NOW()
         """
         
-        # ADICIONAR ESTA LINHA QUE ESTAVA EM FALTA:
 
         if apenas_capitais is True and cidade_id is None:
             query += " AND c.capital = TRUE"
