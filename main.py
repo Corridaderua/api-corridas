@@ -6,7 +6,7 @@ from database import get_db_connection
 app = FastAPI(
     title="API de Calendário de Corridas",
     description="API para gerenciar e buscar provas de corrida de rua.",
-     version="1.0.0"
+    version="1.0.0"
 )
 
 @app.get("/provas", summary="Listar e filtrar provas de corrida")
