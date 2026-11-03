@@ -42,7 +42,6 @@ def listar_provas(
         """
         
         # ADICIONAR ESTA LINHA QUE ESTAVA EM FALTA:
-        params = []
 
         if apenas_capitais is True and cidade_id is None:
             query += " AND c.capital = TRUE"
