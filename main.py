@@ -15,7 +15,9 @@ def listar_provas(
     estado_id: Optional[int] = Query(None, description="Filtrar por ID do estado"),
     apenas_capitais: Optional[bool] = Query(True, description="Se True, traz apenas provas nas capitais"),
     data_inicio: Optional[date] = Query(None, description="Filtrar a partir desta data (YYYY-MM-DD)"),
-    data_fim: Optional[date] = Query(None, description="Filtrar até esta data (YYYY-MM-DD)")
+    data_fim: Optional[date
+] = Query(None, description=
+"Filtrar até esta data (YYYY-MM-DD)")
 ):
     conn = get_db_connection()
     cursor = conn.cursor()
