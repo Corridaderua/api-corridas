@@ -20,16 +20,16 @@ def listar_provas(
     conn = get_db_connection()
     cursor = conn.cursor()
 
-    try:
+       try:
         query = """
             SELECT 
-                p.id, 
-                p.nome AS prova_nome, 
-                p.data_hora, 
-                p.local_descricao, 
-                p.distancias, 
-                p.faixa_preco_inferior, 
-                p.link_inscricao, 
+                p.id,
+                p.nome AS prova_nome,
+                p.data_hora,
+                p.local_descricao,
+                p.distancias,
+                p.faixa_preco_inferior,
+                p.link_inscricao,
                 p.status,
                 c.id AS cidade_id,
                 c.nome AS cidade_nome,
@@ -41,6 +41,7 @@ def listar_provas(
             WHERE p.data_hora >= NOW()
         """
         
+        # ADICIONAR ESTA LINHA QUE ESTAVA EM FALTA:
         params = []
 
         if apenas_capitais is True and cidade_id is None:
