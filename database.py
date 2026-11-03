@@ -1,19 +1,11 @@
-
 import os
 import psycopg2
 from psycopg2.extras import RealDictCursor
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:[SUA-SENHA]@db.smohwgxtukmsuayyuxqu.supabase.co:5432/postgres")
 
 def get_db_connection():
-    if not DATABASE_URL:
-        raise RuntimeError("DATABASE_URL não configurada no Render")
+conn = psycopg2.connect(DATABASE_URL, cursor_factory=RealDictCursor)
+return conn
 
-    conn = psycopg2.connect(
-        DATABASE_URL,
-        sslmode="require",
-        cursor_factory=RealDictCursor
-    )
-
-    return conn
 
