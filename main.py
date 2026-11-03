@@ -36,8 +36,8 @@ def listar_provas(
                 c.capital,
                 e.sigla AS estado_sigla
             FROM provas p
-            JOIN cidades c ON p.cidade_id = c.id
-            JOIN estados e ON c.estado_id = e.id
+            JOIN cidades c ON p.cidade_id =c.id
+            JOIN estados e ON c.estado_id =e.id
             WHERE p.data_hora >= NOW()
         """
         
