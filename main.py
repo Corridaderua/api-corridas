@@ -15,9 +15,7 @@ def listar_provas(
     estado_id: Optional[int] = Query(None, description="Filtrar por ID do estado"),
     apenas_capitais: Optional[bool] = Query(True, description="Se True, traz apenas provas nas capitais"),
     data_inicio: Optional[date] = Query(None, description="Filtrar a partir desta data (YYYY-MM-DD)"),
-    data_fim: Optional[date
-] = Query(None, description=
-"Filtrar até esta data (YYYY-MM-DD)")
+    data_fim: Optional[date] = Query(None, description="Filtrar até esta data (YYYY-MM-DD)")
 ):
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -37,11 +35,13 @@ def listar_provas(
                 c.capital,
                 e.sigla AS estado_sigla
             FROM provas p
-            JOIN cidades c ON p.cidade_id =c.id
-            JOIN estados e ON c.estado_id =e.id
+            JOIN cidades c ON p.cidade_id = c.id
+            JOIN estados e ON c.estado_id = e.id
             WHERE p.data_hora >= NOW()
         """
         
+        # Correção: Inicializar a lista de parâmetros vazios
+        params = []
 
         if apenas_capitais is True and cidade_id is None:
             query += " AND c.capital = TRUE"
@@ -77,3 +77,4 @@ def listar_provas(
     finally:
         cursor.close()
         conn.close()
+
